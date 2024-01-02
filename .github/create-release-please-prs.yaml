@@ -1,0 +1,27 @@
+---
+name: Create Release Please Pull Requests
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'rune-service/**'
+
+jobs:
+  dump_contexts_to_log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+  create-release-please-pull-requests:
+    if: "!startsWith(github.event.head_commit.message, 'chore: release') || github.event.pusher.name != 'github-actions[bot]'"
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚀 Release Please
+        uses: google-github-actions/release-please-action@v4
+        with:
+          skip-github-release: true
