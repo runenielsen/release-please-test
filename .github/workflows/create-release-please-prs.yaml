@@ -18,7 +18,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
   create-release-please-pull-requests:
-    if: "!startsWith(github.event.head_commit.message, 'chore: release') || github.event.pusher.name != 'github-actions[bot]'"
+    if: "!startsWith(github.event.head_commit.message, 'chore: release') || github.head_commit.author.name != 'github-actions[bot]'"
     runs-on: ubuntu-latest
     steps:
       - name: 🚀 Release Please
