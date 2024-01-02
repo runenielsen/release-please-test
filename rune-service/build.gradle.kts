@@ -4,7 +4,7 @@ plugins {
     id("io.micronaut.aot") version "4.2.1"
 }
 
-version = "1.1.0" // x-release-please-version
+version = "1.2.0" // x-release-please-version
 group = "rune.service"
 
 repositories {
