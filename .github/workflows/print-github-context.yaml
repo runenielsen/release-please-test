@@ -22,5 +22,7 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: echo "See GITHUB_CONTEXT in env"
 
+  print-github-context-2:
+    uses: ./.github/workflows/print-github-context-2.yaml
