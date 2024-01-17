@@ -22,7 +22,7 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "See GITHUB_CONTEXT in env"
+        run: echo "See GITHUB_CONTEXT in env. Triggering actor - ${{ github.triggering_actor }}"
 
   print-github-context-2:
     uses: ./.github/workflows/print-github-context-2.yaml

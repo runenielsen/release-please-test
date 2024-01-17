@@ -11,4 +11,4 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "See GITHUB_CONTEXT in env"
+        run: echo "See GITHUB_CONTEXT in env. Triggering actor - ${{ github.triggering_actor }}"
