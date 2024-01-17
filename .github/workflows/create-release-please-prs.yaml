@@ -9,14 +9,6 @@ on:
       - 'rune-service/**'
 
 jobs:
-  dump_contexts_to_log:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
   create-release-please-pull-requests:
     if: "!startsWith(github.event.head_commit.message, 'chore: release') || github.event.head_commit.author.name != 'github-actions[bot]'"
     runs-on: ubuntu-latest

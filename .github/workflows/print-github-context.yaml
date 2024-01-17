@@ -1,0 +1,26 @@
+---
+name: Print GitHub context
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        required: false
+        default: ''
+        type: string
+        description: 'Test'
+  push:
+    branches:
+      - main
+    paths:
+      - 'rune-service/**'
+
+jobs:
+  print-github-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
