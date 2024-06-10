@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/runenielsen/release-please-test/compare/rune-service-v1.15.0...rune-service-v1.16.0) (2024-06-10)
+
+
+### Chores
+
+* **rune-service:** Synchronize argle versions
+
 ## [1.15.0](https://github.com/runenielsen/release-please-test/compare/rune-service-v1.14.0...rune-service-v1.15.0) (2024-06-10)
 
 
