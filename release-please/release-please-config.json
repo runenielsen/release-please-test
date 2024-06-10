@@ -47,6 +47,7 @@
   "packages": {
     "rune-service": {
       "package-name": "rune-service",
+      "component": "rune-service",
       "release-type": "simple",
       "extra-files": [
         "build.gradle.kts"
@@ -54,6 +55,7 @@
     },
     "rune-service-2": {
       "package-name": "rune-service-2",
+      "component": "rune-service-2",
       "release-type": "simple",
       "extra-files": [
         "build.gradle.kts"
@@ -61,6 +63,7 @@
     },
     "rune-service-3": {
       "package-name": "rune-service-3",
+      "component": "rune-service-3",
       "release-type": "simple",
       "extra-files": [
         "build.gradle.kts"
