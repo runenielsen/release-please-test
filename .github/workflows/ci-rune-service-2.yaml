@@ -4,7 +4,7 @@ name: CI for rune-service-2
 on:
   workflow_call:
     inputs:
-      release:
+      release-version:
         required: true
         type: string
   push:
@@ -23,5 +23,5 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "See GITHUB_CONTEXT in env. Triggering actor - ${{ github.triggering_actor }}"
       - name: Release
-        if: ${{ inputs.release }}
-        run: echo RELEASE
+        if: ${{ inputs.release-version }}
+        run: echo RELEASE ${{ inputs.release-version }}

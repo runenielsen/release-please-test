@@ -16,7 +16,6 @@ jobs:
     outputs:
       rune-service-version: ${{ steps.release.outputs.rune-service--version }}
       rune-service-2-version: ${{ steps.release.outputs.rune-service-2--version }}
-      rune-service-3-version: ${{ steps.release.outputs.rune-service-3--version }}
     if: "startsWith(github.event.head_commit.message, 'chore(main): release')"
     runs-on: ubuntu-latest
     steps:
@@ -34,30 +33,14 @@ jobs:
   release-rune-service:
     needs: [release-please]
     if: ${{ needs.release-please.outputs.rune-service-version }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump Release Please Output
-        env:
-          RP_OUTPUTS: ${{ toJson(needs.release-please.outputs) }}
-        run: echo "See RP_OUTPUTS in env."
+    uses: ./.github/workflows/ci-rune-service.yaml
+    with:
+      release-version: ${{ needs.release-please.outputs.rune-service-version }}
 
   release-rune-service-2:
     needs: [release-please]
     if: ${{ needs.release-please.outputs.rune-service-2-version }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump Release Please Output
-        env:
-          RP_OUTPUTS: ${{ toJson(needs.release-please.outputs) }}
-        run: echo "See RP_OUTPUTS in env."
-
-  release-rune-service-3:
-    needs: [release-please]
-    if: ${{ needs.release-please.outputs.rune-service-3-version }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump Release Please Output
-        env:
-          RP_OUTPUTS: ${{ toJson(needs.release-please.outputs) }}
-        run: echo "See RP_OUTPUTS in env."
+    uses: ./.github/workflows/ci-rune-service-2.yaml
+    with:
+      release-version: ${{ needs.release-please.outputs.rune-service-version }}
 
