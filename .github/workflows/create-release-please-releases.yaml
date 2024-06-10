@@ -1,0 +1,27 @@
+---
+name: Release Please
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'rune-service/**'
+      - 'rune-service-2/**'
+      - 'rune-service-3/**'
+
+jobs:
+  create-release-please-pull-requests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚀 Release Please
+        uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please/release-please-config.json
+          manifest-file: release-please/.release-please-manifest.json
+          include-component-in-tag: true
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "See GITHUB_CONTEXT in env. Triggering actor - ${{ github.triggering_actor }}"
