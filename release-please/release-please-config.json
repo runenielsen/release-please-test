@@ -74,7 +74,8 @@
       "groupName": "argle",
       "components": [
         "rune-service", "rune-service-2"
-      ]
+      ],
+      "merge": true
     }
   ]
 }
