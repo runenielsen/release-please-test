@@ -1,7 +1,5 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-  "separate-pull-requests": true,
-  "pull-request-title-pattern": "chore: release ${component} ${version}",
   "commit-search-depth": 2500,
   "changelog-sections": [
     {
@@ -68,8 +66,7 @@
       "groupName": "services",
       "components": [
         "rune-service", "rune-service-2"
-      ],
-      "merge": true
+      ]
     }
   ]
 }
