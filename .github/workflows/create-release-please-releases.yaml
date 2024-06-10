@@ -30,6 +30,16 @@ jobs:
           RP_OUTPUTS: ${{ toJson(steps.release.outputs) }}
         run: echo "See RP_OUTPUTS in env."
 
+  dump-rune-service:
+    needs: [release-please]
+    if: ${{ needs.release-please.outputs.rune-service-version }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump Release Please Output
+        env:
+          RP_OUTPUTS: ${{ toJson(needs.release-please.outputs) }}
+        run: echo "See RP_OUTPUTS in env."
+
   release-rune-service:
     needs: [release-please]
     if: ${{ needs.release-please.outputs.rune-service-version }}
@@ -42,5 +52,5 @@ jobs:
     if: ${{ needs.release-please.outputs.rune-service-2-version }}
     uses: ./.github/workflows/ci-rune-service-2.yaml
     with:
-      release-version: ${{ needs.release-please.outputs.rune-service-version }}
+      release-version: ${{ needs.release-please.outputs.rune-service-2-version }}
 
