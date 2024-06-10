@@ -1,0 +1,28 @@
+---
+name: Create Release Please Pull Requests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'rune-service/**'
+
+jobs:
+  release-please:
+    if: "github.event_name == 'push' && github.ref == 'refs/heads/main' && startsWith(github.event.head_commit.message, 'chore(main): release argle ')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚀 Release Please
+        uses: googleapis/release-please-action@v4
+        with:
+          path: rune-service
+          include-component-in-tag: true
+          skip-github-pull-request: true
+          config-file: release-please/release-please-config.json
+          manifest-file: release-please/.release-please-manifest.json
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "See GITHUB_CONTEXT in env. Triggering actor - ${{ github.triggering_actor }}"
