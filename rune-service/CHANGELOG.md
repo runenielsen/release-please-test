@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/runenielsen/release-please-test/compare/rune-service-v1.14.0...rune-service-v1.15.0) (2024-06-10)
+
+
+### Features
+
+* update README.md ([bae248d](https://github.com/runenielsen/release-please-test/commit/bae248d6155bb04b9c9287548e017b176c2a9586))
+
 ## [1.14.0](https://github.com/runenielsen/release-please-test/compare/rune-service-v1.13.0...rune-service-v1.14.0) (2024-06-10)
 
 
