@@ -69,6 +69,10 @@
       "components": [
         "rune-service", "rune-service-2"
       ]
+    },
+    {
+      "type": "group-priority",
+      "groups": ["simple"]
     }
   ]
 }
