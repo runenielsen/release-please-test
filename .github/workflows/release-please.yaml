@@ -1,5 +1,5 @@
 ---
-name: Create Release Please Pull Requests
+name: Release Please
 
 on:
   workflow_dispatch:
@@ -19,9 +19,9 @@ jobs:
       - name: 🚀 Release Please
         uses: googleapis/release-please-action@v4
         with:
-          skip-github-release: true
           config-file: release-please/release-please-config.json
           manifest-file: release-please/.release-please-manifest.json
+          include-component-in-tag: true
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
