@@ -1,5 +1,5 @@
 ---
-name: Create Release for rune-service-2
+name: CI for rune-service-2
 
 on:
   workflow_call:

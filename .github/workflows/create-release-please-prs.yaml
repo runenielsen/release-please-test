@@ -1,5 +1,5 @@
 ---
-name: Release Please
+name: Create Release Please Pull Requests
 
 on:
   workflow_dispatch:
