@@ -2,6 +2,7 @@
 name: Create Release Please Pull Requests
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
