@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.19.0](https://github.com/runenielsen/release-please-test/compare/rune-service-2-v1.18.0...rune-service-2-v1.19.0) (2024-06-10)
+
+
+### Features
+
+* update README.md ([bd3dbc2](https://github.com/runenielsen/release-please-test/commit/bd3dbc26b2ed372154504881c076ad7693148cf9))
+* update README.md ([c860bca](https://github.com/runenielsen/release-please-test/commit/c860bca59b18fb7e733507af0eae52f12e33f8b7))
+* update README.md ([43ea33a](https://github.com/runenielsen/release-please-test/commit/43ea33a0d88d2919ee15034654101fae377642dc))
+* update README.md ([ce849cb](https://github.com/runenielsen/release-please-test/commit/ce849cb006b308bc862711d5657e1556e8d0d413))
+* update README.md ([53dedaa](https://github.com/runenielsen/release-please-test/commit/53dedaa324174a452f5c7c227320ed21edeb4db5))
+* update README.md ([1c0eb01](https://github.com/runenielsen/release-please-test/commit/1c0eb0101b85f736516458ae863b3c5c57297ffc))
+
 ## [1.18.0](https://github.com/runenielsen/release-please-test/compare/rune-service-2-v1.17.0...rune-service-2-v1.18.0) (2024-06-10)
 
 
