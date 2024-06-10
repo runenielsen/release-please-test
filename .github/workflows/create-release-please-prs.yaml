@@ -13,14 +13,13 @@ on:
 
 jobs:
   create-release-please-pull-requests:
+    if: "!startsWith(github.event.head_commit.message, 'chore(main): release') || github.event.head_commit.author.name != 'github-actions[bot]'"
     runs-on: ubuntu-latest
     steps:
       - name: 🚀 Release Please
         uses: googleapis/release-please-action@v4
         with:
-          config-file: release-please/release-please-config.json
-          manifest-file: release-please/.release-please-manifest.json
-          include-component-in-tag: true
+          skip-github-release: true
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
