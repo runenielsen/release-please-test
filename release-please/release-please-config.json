@@ -61,5 +61,14 @@
         "build.gradle.kts"
       ]
     }
-  }
+  },
+  "plugins": [
+    {
+      "type": "linked-versions",
+      "groupName": "services",
+      "components": [
+        "rune-service", "rune-service-2"
+      ]
+    }
+  ]
 }
