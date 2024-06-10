@@ -9,6 +9,7 @@ on:
     paths:
       - 'rune-service/**'
       - 'rune-service-2/**'
+      - 'rune-service-3/**'
 
 jobs:
   create-release-please-pull-requests:
