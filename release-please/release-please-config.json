@@ -53,6 +53,13 @@
       "extra-files": [
         "build.gradle.kts"
       ]
+    },
+    "rune-service-2": {
+      "package-name": "rune-service-2",
+      "release-type": "simple",
+      "extra-files": [
+        "build.gradle.kts"
+      ]
     }
   }
 }

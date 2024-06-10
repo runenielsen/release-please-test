@@ -10,10 +10,12 @@ on:
 
 jobs:
   create-release-please-pull-requests:
-    if: "!startsWith(github.event.head_commit.message, 'chore: release') || github.event.head_commit.author.name != 'github-actions[bot]'"
+    if: "!startsWith(github.event.head_commit.message, 'chore: release') && github.event.head_commit.author.name != 'github-actions[bot]'"
     runs-on: ubuntu-latest
     steps:
       - name: 🚀 Release Please
-        uses: google-github-actions/release-please-action@v4
+        uses: googleapis/release-please-action@v4
         with:
           skip-github-release: true
+          config-file: release-please/release-please-config.json
+          manifest-file: release-please/.release-please-manifest.json
