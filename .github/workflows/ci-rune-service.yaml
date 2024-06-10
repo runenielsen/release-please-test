@@ -23,5 +23,5 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "See GITHUB_CONTEXT in env. Triggering actor - ${{ github.triggering_actor }}"
       - name: Release
-        if: ${{ inputs.config-file }}
+        if: ${{ inputs.release }}
         run: echo RELEASE
