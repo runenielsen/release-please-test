@@ -9,11 +9,6 @@ on:
         default: ''
         type: string
         description: 'Test'
-  push:
-    branches:
-      - main
-    paths:
-      - 'rune-service/**'
 
 jobs:
   print-github-context:
