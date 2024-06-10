@@ -66,5 +66,14 @@
         "build.gradle.kts"
       ]
     }
-  }
+  },
+  "plugins": [
+    {
+      "type": "linked-versions",
+      "groupName": "argle",
+      "components": [
+        "rune-service", "rune-service-2"
+      ]
+    }
+  ]
 }
