@@ -22,3 +22,7 @@ jobs:
           skip-github-release: true
           config-file: release-please/release-please-config.json
           manifest-file: release-please/.release-please-manifest.json
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "See GITHUB_CONTEXT in env. Triggering actor - ${{ github.triggering_actor }}"

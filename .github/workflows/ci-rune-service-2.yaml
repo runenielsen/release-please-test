@@ -1,23 +1,26 @@
 ---
-name: Print GitHub context
+name: Create Release for rune-service-2
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
-      test:
-        required: false
-        default: ''
+      release:
+        required: true
         type: string
-        description: 'Test'
+  push:
+    branches:
+      - main
+    paths:
+      - 'rune-service-2/**'
 
 jobs:
-  print-github-context:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "See GITHUB_CONTEXT in env. Triggering actor - ${{ github.triggering_actor }}"
-
-  print-github-context-2:
-    uses: ./.github/workflows/print-github-context-2.yaml
+      - name: Release
+        if: ${{ inputs.config-file }}
+        run: echo RELEASE

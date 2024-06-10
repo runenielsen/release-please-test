@@ -1,0 +1,26 @@
+---
+name: Create Release for rune-service
+
+on:
+  workflow_call:
+    inputs:
+      release:
+        required: true
+        type: string
+  push:
+    branches:
+      - main
+    paths:
+      - 'rune-service/**'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "See GITHUB_CONTEXT in env. Triggering actor - ${{ github.triggering_actor }}"
+      - name: Release
+        if: ${{ inputs.config-file }}
+        run: echo RELEASE
