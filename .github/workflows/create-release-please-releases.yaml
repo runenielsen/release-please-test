@@ -1,5 +1,5 @@
 ---
-name: Create Release Please Pull Requests
+name: Create Release Please Releases
 
 on:
   workflow_dispatch:
@@ -13,14 +13,15 @@ on:
 
 jobs:
   create-release-please-pull-requests:
-    if: "!startsWith(github.event.head_commit.message, 'chore(main): release') || github.event.head_commit.author.name != 'github-actions[bot]'"
+    if: "startsWith(github.event.head_commit.message, 'chore(main): release')"
     runs-on: ubuntu-latest
     steps:
       - name: 🚀 Release Please
         uses: googleapis/release-please-action@v4
         id: release
         with:
-          skip-github-release: true
+          include-component-in-tag: true
+          skip-github-pull-request: true
       - name: Dump Release Please Output
         env:
           RP_OUTPUTS: ${{ toJson(steps.release.outputs) }}
