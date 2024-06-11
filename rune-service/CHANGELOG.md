@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.22.0](https://github.com/runenielsen/release-please-test/compare/rune-service-v1.21.0...rune-service-v1.22.0) (2024-06-11)
+
+
+### Features
+
+* first ([f6cc6c4](https://github.com/runenielsen/release-please-test/commit/f6cc6c4ae5e45a26a1edb622032c7080d729cac1))
+* second ([2e3b23b](https://github.com/runenielsen/release-please-test/commit/2e3b23b70a62c80bf9920da9f53779066420b4e6))
+
 ## [1.21.0](https://github.com/runenielsen/release-please-test/compare/rune-service-v1.20.0...rune-service-v1.21.0) (2024-06-10)
 
 
