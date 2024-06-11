@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - release
     paths:
       - 'rune-service/**'
       - 'rune-service-2/**'
@@ -16,7 +16,7 @@ jobs:
     outputs:
       rune-service-version: ${{ steps.release.outputs.rune-service--version }}
       rune-service-2-version: ${{ steps.release.outputs.rune-service-2--version }}
-    if: "startsWith(github.event.head_commit.message, 'chore(main): release')"
+    if: "startsWith(github.event.head_commit.message, 'chore(release): release')"
     runs-on: ubuntu-latest
     steps:
       - name: 🚀 Release Please
