@@ -7,8 +7,8 @@ on:
       - main
 
 jobs:
-  changed_files:
-    name: Test changed-files
+  changed_projects:
+    name: Find changed projects
     runs-on: ubuntu-latest
     outputs:
       rune-service-changed: ${{ steps.map-changed-dirs.outputs.rune-service-changed }}
@@ -45,3 +45,27 @@ jobs:
           for dir in "${!CHANGED_DIRS[@]}"; do
             echo "$dir=${CHANGED_DIRS[$dir]}" >> $GITHUB_OUTPUT
           done
+
+  test1:
+    needs: [changed_projects]
+    runs-on: ubuntu-latest
+    if: ${{ needs.changed_projects.outputs.rune-service-changed }}
+    steps:
+      - run: |
+          echo "rune-service changed!"
+
+  test2:
+    needs: [changed_projects]
+    runs-on: ubuntu-latest
+    if: ${{ needs.changed_projects.outputs.rune-service-2-changed }}
+    steps:
+      - run: |
+          echo "rune-service-2 changed!"
+
+  test3:
+    needs: [changed_projects]
+    runs-on: ubuntu-latest
+    if: ${{ needs.changed_projects.outputs.rune-service-3-changed }}
+    steps:
+      - run: |
+          echo "rune-service-3 changed!"
