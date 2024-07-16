@@ -8,13 +8,17 @@ on:
 
 jobs:
   changed_files:
-    runs-on: ubuntu-latest
     name: Test changed-files
+    runs-on: ubuntu-latest
+    outputs:
+      rune-service-changed: ${{ steps.map-changed-dirs.outputs.rune-service-changed }}
+      rune-service-2-changed: ${{ steps.map-changed-dirs.outputs.rune-service-2-changed }}
+      rune-service-3-changed: ${{ steps.map-changed-dirs.outputs.rune-service-3-changed }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get changed files
-        id: changed-files
+      - name: Get changed directories
+        id: changed-dirs
         uses: tj-actions/changed-files@v44
         with:
           dir_names: true
@@ -24,9 +28,10 @@ jobs:
             rune-service-2/**
             rune-service-3/**
 
-      - name: List all changed files
+      - name: Map changed directories to output
+        id: map-changed-dirs
         env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+          ALL_CHANGED_FILES: ${{ steps.changed-dirs.outputs.all_changed_files }}
         run: |
           declare -A CHANGED_DIRS
           CHANGED_DIRS["rune-service"]=false
