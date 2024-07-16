@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.4](https://github.com/runenielsen/release-please-test/compare/test/rune-service-4-v0.0.3...test/rune-service-4-v0.0.4) (2024-07-16)
+
+
+### Documentation
+
+* added some documentation ([d61311b](https://github.com/runenielsen/release-please-test/commit/d61311bbb466952fe0a3b74821c4b0a0930023bb))
+* added some documentation ([750b2d8](https://github.com/runenielsen/release-please-test/commit/750b2d8b40d5995ab83dd0ccd05ee669920fcae1))
+
 ## [0.0.3](https://github.com/runenielsen/release-please-test/compare/test/rune-service-4-v0.0.2...test/rune-service-4-v0.0.3) (2024-07-16)
 
 
