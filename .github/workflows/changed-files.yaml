@@ -34,7 +34,7 @@ jobs:
           CHANGED_DIRS["rune-service-3"]=false
   
           for dir in ${ALL_CHANGED_FILES}; do
-            CHANGED_DIRS[$file]=true
+            CHANGED_DIRS[$dir]=true
           done
 
           for dir in "${!CHANGED_DIRS[@]}"; do
