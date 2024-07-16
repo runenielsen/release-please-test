@@ -66,6 +66,10 @@
       "extra-files": [
         "build.gradle.kts"
       ]
+    },
+    "test/rune-service-4": {
+      "component": "test/rune-service-4",
+      "release-type": "simple"
     }
   }
 }

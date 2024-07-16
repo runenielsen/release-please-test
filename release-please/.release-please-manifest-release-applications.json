@@ -1,5 +1,6 @@
 {
   "rune-service": "1.23.0",
   "rune-service-2": "1.23.0",
-  "rune-service-3": "1.0.0"
+  "rune-service-3": "1.0.0",
+  "test/rune-service-4": "0.0.1"
 }

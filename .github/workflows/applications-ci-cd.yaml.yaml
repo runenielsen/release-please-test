@@ -1,20 +1,31 @@
 name: CI/CD - Applications
 
 on:
-  pull_request:
   push:
     branches:
-      - main
+      - 'main'
+      - 'release-applications/**'
+    paths:
+      - 'rune-service/**'
+      - 'rune-service-2/**'
+      - 'rune-service-3/**'
+      - 'test/rune-service-4/**'
+
+  pull_request:
+    paths:
+      - 'rune-service/**'
+      - 'rune-service-2/**'
+      - 'rune-service-3/**'
+      - 'test/rune-service-4/**'
 
 jobs:
   changed-projects:
-    name: Find changed projects
-    runs-on: ubuntu-latest
     outputs:
       rune-service: ${{ steps.map-changed-projects.outputs['rune-service'] == 'true' }}
       rune-service-2: ${{ steps.map-changed-projects.outputs['rune-service-2'] == 'true' }}
       rune-service-3: ${{ steps.map-changed-projects.outputs['rune-service-3'] == 'true' }}
       test/rune-service-4: ${{ steps.map-changed-projects.outputs['test/rune-service-4'] == 'true' }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -39,12 +50,36 @@ jobs:
             echo "$project=true" >> $GITHUB_OUTPUT
           done
 
-  test:
-    needs: [changed-projects]
+  release-please:
+    outputs:
+      rune-service: ${{ steps.release-please.outputs['rune-service--release_created'] == 'true' }}
+      rune-service-version: ${{ steps.release-please.outputs['rune-service--version'] }}
+      rune-service-2: ${{ steps.release-please.outputs['rune-service-2--release_created'] == 'true' }}
+      rune-service-2-version: ${{ steps.release-please.outputs['rune-service-2--version'] }}
+      rune-service-3: ${{ steps.release-please.outputs['rune-service-3--release_created'] == 'true' }}
+      rune-service-3-version: ${{ steps.release-please.outputs['rune-service-3--version'] }}
+      test/rune-service-4: ${{ steps.release-please.outputs['test/rune-service-4--release_created'] == 'true' }}
+      test/rune-service-4-version: ${{ steps.release-please.outputs['test/rune-service-4--version'] }}
     runs-on: ubuntu-latest
     steps:
-      - name: TEST
+      - name: 🚀 Release Please
+        if: "github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release-applications/') && startsWith(github.event.head_commit.message, 'chore: release applications from branch ')"
+        uses: googleapis/release-please-action@v4
+        id: release-please
+        with:
+          include-component-in-tag: true
+          skip-github-pull-request: true
+          target-branch: ${{ github.ref_name }}
+          config-file: release-please/release-please-config-release-applications.json
+          manifest-file: release-please/.release-please-manifest-release-applications.json
+
+  dump:
+    needs: [changed-projects, release-please]
+    runs-on: ubuntu-latest
+    steps:
+      - name: DUMP
         env:
-          ARGLE: ${{ toJson(needs.changed-projects.outputs) }}
+          CHANGED_PROJECTS: ${{ toJson(needs.changed-projects.outputs) }}
+          RELEASE_PLEASE: ${{ toJson(needs.release-please.outputs) }}
         run: |
           echo "See env"
