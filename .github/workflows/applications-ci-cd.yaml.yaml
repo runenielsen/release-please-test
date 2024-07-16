@@ -85,6 +85,7 @@ jobs:
           echo "See env"
 
   rune-service-ci-cd:
+    name: CI/CD - rune-service
     needs: [changed-projects, release-please]
     if: needs.changed-projects.outputs['rune-service'] == 'true' ||
       needs.release-please.outputs['rune-service'] == 'true'
@@ -96,6 +97,7 @@ jobs:
       release-version: ${{ needs.release-please.outputs['rune-service-version'] }}
 
   rune-service-2-ci-cd:
+    name: CI/CD - rune-service-2
     needs: [changed-projects, release-please]
     if: needs.changed-projects.outputs['rune-service-2'] == 'true' ||
       needs.release-please.outputs['rune-service-2'] == 'true'
@@ -107,6 +109,7 @@ jobs:
       release-version: ${{ needs.release-please.outputs['rune-service-2-version'] }}
 
   rune-service-3-ci-cd:
+    name: CI/CD - rune-service-3
     needs: [changed-projects, release-please]
     if: needs.changed-projects.outputs['rune-service-3'] == 'true' ||
       needs.release-please.outputs['rune-service-3'] == 'true'
@@ -118,6 +121,7 @@ jobs:
       release-version: ${{ needs.release-please.outputs['rune-service-3-version'] }}
 
   rune-service-4-ci-cd:
+    name: CI/CD - rune-service-4
     needs: [changed-projects, release-please]
     if: needs.changed-projects.outputs['test/rune-service-4'] == 'true' ||
       needs.release-please.outputs['test/rune-service-4'] == 'true'

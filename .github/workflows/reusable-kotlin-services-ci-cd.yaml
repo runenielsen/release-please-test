@@ -1,6 +1,5 @@
 ---
 name: CI/CD - Kotlin services
-run-name: CI/CD - ${{ inputs.project-path }}
 
 on:
   workflow_call:
