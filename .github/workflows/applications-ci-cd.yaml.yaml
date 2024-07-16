@@ -1,4 +1,4 @@
-name: Changed files
+name: CI/CD - Applications
 
 on:
   pull_request:
