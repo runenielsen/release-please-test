@@ -11,10 +11,10 @@ jobs:
     name: Find changed projects
     runs-on: ubuntu-latest
     outputs:
-      rune-service: ${{ steps.map-changed-dirs.outputs.rune-service == 'true' }}
-      rune-service-2: ${{ steps.map-changed-dirs.outputs.rune-service-2 == 'true' }}
-      rune-service-3: ${{ steps.map-changed-dirs.outputs.rune-service-3 == 'true' }}
-      test/rune-service-4: ${{ steps.map-changed-dirs.outputs['test/rune-service-3'] == 'true' }}
+      rune-service: ${{ steps.map-changed-dirs.outputs['rune-service'] == 'true' }}
+      rune-service-2: ${{ steps.map-changed-dirs.outputs['rune-service-2'] == 'true' }}
+      rune-service-3: ${{ steps.map-changed-dirs.outputs['rune-service-3'] == 'true' }}
+      test/rune-service-4: ${{ steps.map-changed-dirs.outputs['test/rune-service-4'] == 'true' }}
     steps:
       - uses: actions/checkout@v4
 
