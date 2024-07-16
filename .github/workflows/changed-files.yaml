@@ -14,6 +14,7 @@ jobs:
       rune-service: ${{ steps.map-changed-dirs.outputs.rune-service == 'true' }}
       rune-service-2: ${{ steps.map-changed-dirs.outputs.rune-service-2 == 'true' }}
       rune-service-3: ${{ steps.map-changed-dirs.outputs.rune-service-3 == 'true' }}
+      test/rune-service-4: ${{ steps.map-changed-dirs.outputs.test/rune-service-3 == 'true' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -27,6 +28,7 @@ jobs:
             rune-service/**
             rune-service-2/**
             rune-service-3/**
+            test/rune-service-4/**
 
       - name: Map changed directories to output
         id: map-changed-dirs
