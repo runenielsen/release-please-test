@@ -17,20 +17,26 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v44
         with:
+          dir_names: true
+          dir_names_exclude_current_dir: true
           files: |
             rune-service/**
-
-      - name: Get changed files 2
-        id: changed-files-2
-        uses: tj-actions/changed-files@v44
-        with:
-          files: |
             rune-service-2/**
+            rune-service-3/**
 
       - name: List all changed files
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
-          for file in ${ALL_CHANGED_FILES}; do
-            echo "$file was changed"
+          declare -A CHANGED_DIRS
+          CHANGED_DIRS["rune-service"]=false
+          CHANGED_DIRS["rune-service-2"]=false
+          CHANGED_DIRS["rune-service-3"]=false
+  
+          for dir in ${ALL_CHANGED_FILES}; do
+            CHANGED_DIRS[$file]=true
+          done
+
+          for dir in "${!CHANGED_DIRS[@]}"; do
+            echo "$dir=${CHANGED_DIRS[$dir]}" >> $GITHUB_OUTPUT
           done
