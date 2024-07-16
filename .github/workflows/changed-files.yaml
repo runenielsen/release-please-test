@@ -36,6 +36,7 @@ jobs:
           for dir in ${ALL_CHANGED_FILES}; do
             echo "$dir=true" >> $GITHUB_OUTPUT
           done
+          echo $GITHUB_OUTPUT
 
   test1:
     needs: [changed_projects]
