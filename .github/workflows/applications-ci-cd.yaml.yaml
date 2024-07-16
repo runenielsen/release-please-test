@@ -1,0 +1,50 @@
+name: CI/CD - Applications
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  changed-projects:
+    name: Find changed projects
+    runs-on: ubuntu-latest
+    outputs:
+      rune-service: ${{ steps.map-changed-projects.outputs['rune-service'] == 'true' }}
+      rune-service-2: ${{ steps.map-changed-projects.outputs['rune-service-2'] == 'true' }}
+      rune-service-3: ${{ steps.map-changed-projects.outputs['rune-service-3'] == 'true' }}
+      test/rune-service-4: ${{ steps.map-changed-projects.outputs['test/rune-service-4'] == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get changed projects
+        id: changed-projects
+        uses: tj-actions/changed-files@v44
+        with:
+          dir_names: true
+          dir_names_exclude_current_dir: true
+          files: |
+            rune-service/**
+            rune-service-2/**
+            rune-service-3/**
+            test/rune-service-4/**
+
+      - name: Map changed projects to output
+        id: map-changed-projects
+        env:
+          ALL_CHANGED_PROJECTS: ${{ steps.changed-projects.outputs.all_changed_files }}
+        run: |
+          for project in ${ALL_CHANGED_PROJECTS}; do
+            echo "$project=true" >> $GITHUB_OUTPUT
+          done
+
+  test:
+    needs: [changed-projects]
+    runs-on: ubuntu-latest
+    steps:
+      - name: TEST
+        env:
+          ARGLE: ${{ toJson(needs.changed-projects.outputs) }}
+        run: |
+          echo "See env"
