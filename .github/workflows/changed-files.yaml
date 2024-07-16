@@ -2,8 +2,6 @@ name: Changed files
 
 on:
   pull_request:
-    paths:
-      - '**'
   push:
     branches:
       - main
