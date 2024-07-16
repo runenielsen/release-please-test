@@ -16,8 +16,8 @@ jobs:
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v44
-#        with:
-#          since_last_remote_commit: true
+        with:
+          fetch_depth: 2
 
       - name: List all changed files
         env:
