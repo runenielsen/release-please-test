@@ -1,8 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-  "separate-pull-requests": true,
-  "pull-request-title-pattern": "chore${scope}: release${component} ${version}",
-  "group-pull-request-title-pattern": "chore${scope}: release argle libraries",
+  "separate-pull-requests": false,
+  "group-pull-request-title-pattern": "chore: release applications from ${branch}",
   "changelog-sections": [
     {
       "type": "feat",
@@ -68,14 +67,5 @@
         "build.gradle.kts"
       ]
     }
-  },
-  "plugins": [
-    {
-      "type": "linked-versions",
-      "groupName": "argle",
-      "components": [
-        "rune-service", "rune-service-2"
-      ]
-    }
-  ]
+  }
 }
