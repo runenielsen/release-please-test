@@ -83,3 +83,44 @@ jobs:
           RELEASE_PLEASE: ${{ toJson(needs.release-please.outputs) }}
         run: |
           echo "See env"
+
+  rune-service-ci-cd:
+    needs: [changed-projects, release-please]
+    if: needs.changed-projects.outputs['rune-service'] == 'true' ||
+      needs.release-please.outputs['rune-service'] == 'true'
+    uses: ./.github/workflows/reusable-kotlin-services-ci-cd.yaml
+    with:
+      project-name: rune-service
+      project-path: rune-service
+      release-version: ${{ needs.release-please.outputs['rune-service-version'] }}
+
+  rune-service-2-ci-cd:
+    needs: [release-please]
+    if: needs.changed-projects.outputs['rune-service-2'] == 'true' ||
+      needs.release-please.outputs['rune-service-2'] == 'true'
+    uses: ./.github/workflows/reusable-kotlin-services-ci-cd.yaml
+    with:
+      project-name: rune-service-2
+      project-path: rune-service-2
+      release-version: ${{ needs.release-please.outputs['rune-service-2-version'] }}
+
+  rune-service-3-ci-cd:
+    needs: [release-please]
+    if: needs.changed-projects.outputs['rune-service-3'] == 'true' ||
+      needs.release-please.outputs['rune-service-3'] == 'true'
+    uses: ./.github/workflows/reusable-kotlin-services-ci-cd.yaml
+    with:
+      project-name: rune-service-3
+      project-path: rune-service-3
+      release-version: ${{ needs.release-please.outputs['rune-service-3-version'] }}
+
+  rune-service-4-ci-cd:
+    needs: [release-please]
+    if: needs.changed-projects.outputs['test/rune-service-4'] == 'true' ||
+      needs.release-please.outputs['test/rune-service-4'] == 'true'
+    uses: ./.github/workflows/reusable-kotlin-services-ci-cd.yaml
+    with:
+      project-name: rune-service-4
+      project-path: test/rune-service-4
+      released: ${{ needs.release-please.outputs['test/rune-service-4'] == 'true' }}
+      release-version: ${{ needs.release-please.outputs['test/rune-service-4-version'] }}

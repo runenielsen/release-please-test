@@ -1,0 +1,30 @@
+---
+name: CI/CD - Kotlin services
+run-name: CI/CD - ${{ inputs.project-path }}
+
+on:
+  workflow_call:
+    inputs:
+      project-name:
+        required: true
+        type: string
+      project-path:
+        required: true
+        type: string
+      released:
+        required: true
+        type: boolean
+      release-version:
+        required: true
+        type: string
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump
+        run: |
+          echo "Project name: ${{ inputs.project-name }}"
+          echo "Project name: ${{ inputs.project-path }}"
+          echo "Project name: ${{ inputs.released }}"
+          echo "Project name: ${{ inputs.release-version }}"
