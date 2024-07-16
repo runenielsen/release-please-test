@@ -34,6 +34,8 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-dirs.outputs.all_changed_files }}
         run: |
           for dir in ${ALL_CHANGED_FILES}; do
+            echo DIR
+            echo $dir
             echo "$dir=true" >> $GITHUB_OUTPUT
           done
           echo $GITHUB_OUTPUT
