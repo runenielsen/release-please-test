@@ -11,9 +11,9 @@ jobs:
     name: Find changed projects
     runs-on: ubuntu-latest
     outputs:
-      rune-service-changed: ${{ steps.map-changed-dirs.outputs.rune-service }}
-      rune-service-2-changed: ${{ steps.map-changed-dirs.outputs.rune-service-2 }}
-      rune-service-3-changed: ${{ steps.map-changed-dirs.outputs.rune-service-3 }}
+      rune-service-changed: ${{ steps.map-changed-dirs.outputs.rune-service == 'true' }}
+      rune-service-2-changed: ${{ steps.map-changed-dirs.outputs.rune-service-2 == 'true' }}
+      rune-service-3-changed: ${{ steps.map-changed-dirs.outputs.rune-service-3 == 'true' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -33,17 +33,8 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-dirs.outputs.all_changed_files }}
         run: |
-          declare -A CHANGED_DIRS
-          CHANGED_DIRS["rune-service"]=false
-          CHANGED_DIRS["rune-service-2"]=false
-          CHANGED_DIRS["rune-service-3"]=false
-  
           for dir in ${ALL_CHANGED_FILES}; do
-            CHANGED_DIRS[$dir]=true
-          done
-
-          for dir in "${!CHANGED_DIRS[@]}"; do
-            echo "$dir=${CHANGED_DIRS[$dir]}" >> $GITHUB_OUTPUT
+            echo "$dir=true >> $GITHUB_OUTPUT
           done
 
   test1:
