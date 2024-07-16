@@ -22,9 +22,8 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Dump
+      - name: DUMP
+        env:
+          INPUTS: ${{ toJson(inputs) }}
         run: |
-          echo "Project name: ${{ inputs.project-name }}"
-          echo "Project name: ${{ inputs.project-path }}"
-          echo "Project name: ${{ inputs.released }}"
-          echo "Project name: ${{ inputs.release-version }}"
+          echo "See env"
