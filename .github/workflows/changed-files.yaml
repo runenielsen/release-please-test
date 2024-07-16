@@ -1,4 +1,4 @@
-name: Changed files
+name: Changed files test
 
 on:
   pull_request:
