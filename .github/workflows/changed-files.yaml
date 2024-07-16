@@ -7,13 +7,13 @@ on:
       - main
 
 jobs:
-  changed_projects:
+  changed-projects:
     name: Find changed projects
     runs-on: ubuntu-latest
     outputs:
-      rune-service-changed: ${{ steps.map-changed-dirs.outputs.rune-service == 'true' }}
-      rune-service-2-changed: ${{ steps.map-changed-dirs.outputs.rune-service-2 == 'true' }}
-      rune-service-3-changed: ${{ steps.map-changed-dirs.outputs.rune-service-3 == 'true' }}
+      rune-service: ${{ steps.map-changed-dirs.outputs.rune-service == 'true' }}
+      rune-service-2: ${{ steps.map-changed-dirs.outputs.rune-service-2 == 'true' }}
+      rune-service-3: ${{ steps.map-changed-dirs.outputs.rune-service-3 == 'true' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -43,26 +43,12 @@ jobs:
         run: |
             echo "See env"
 
-  test1:
-    needs: [changed_projects]
+  test:
+    needs: [changed-projects]
     runs-on: ubuntu-latest
-    if: ${{ needs.changed_projects.outputs.rune-service-changed }}
     steps:
-      - run: |
-          echo "rune-service changed!"
-
-  test2:
-    needs: [changed_projects]
-    runs-on: ubuntu-latest
-    if: ${{ needs.changed_projects.outputs.rune-service-2-changed }}
-    steps:
-      - run: |
-          echo "rune-service-2 changed!"
-
-  test3:
-    needs: [changed_projects]
-    runs-on: ubuntu-latest
-    if: ${{ needs.changed_projects.outputs.rune-service-3-changed }}
-    steps:
-      - run: |
-          echo "rune-service-3 changed!"
+      - name: TEST
+        env:
+          ARGLE: ${{ toJson(needs.changed-projects.outputs) }}
+        run: |
+          echo "See env"
