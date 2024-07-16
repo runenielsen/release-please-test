@@ -96,7 +96,7 @@ jobs:
       release-version: ${{ needs.release-please.outputs['rune-service-version'] }}
 
   rune-service-2-ci-cd:
-    needs: [release-please]
+    needs: [changed-projects, release-please]
     if: needs.changed-projects.outputs['rune-service-2'] == 'true' ||
       needs.release-please.outputs['rune-service-2'] == 'true'
     uses: ./.github/workflows/reusable-kotlin-services-ci-cd.yaml
@@ -107,7 +107,7 @@ jobs:
       release-version: ${{ needs.release-please.outputs['rune-service-2-version'] }}
 
   rune-service-3-ci-cd:
-    needs: [release-please]
+    needs: [changed-projects, release-please]
     if: needs.changed-projects.outputs['rune-service-3'] == 'true' ||
       needs.release-please.outputs['rune-service-3'] == 'true'
     uses: ./.github/workflows/reusable-kotlin-services-ci-cd.yaml
@@ -118,7 +118,7 @@ jobs:
       release-version: ${{ needs.release-please.outputs['rune-service-3-version'] }}
 
   rune-service-4-ci-cd:
-    needs: [release-please]
+    needs: [changed-projects, release-please]
     if: needs.changed-projects.outputs['test/rune-service-4'] == 'true' ||
       needs.release-please.outputs['test/rune-service-4'] == 'true'
     uses: ./.github/workflows/reusable-kotlin-services-ci-cd.yaml
