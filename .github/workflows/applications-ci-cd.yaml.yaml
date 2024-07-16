@@ -92,6 +92,7 @@ jobs:
     with:
       project-name: rune-service
       project-path: rune-service
+      released: ${{ needs.release-please.outputs['test/rune-service'] == 'true' }}
       release-version: ${{ needs.release-please.outputs['rune-service-version'] }}
 
   rune-service-2-ci-cd:
@@ -102,6 +103,7 @@ jobs:
     with:
       project-name: rune-service-2
       project-path: rune-service-2
+      released: ${{ needs.release-please.outputs['test/rune-service-2'] == 'true' }}
       release-version: ${{ needs.release-please.outputs['rune-service-2-version'] }}
 
   rune-service-3-ci-cd:
@@ -112,6 +114,7 @@ jobs:
     with:
       project-name: rune-service-3
       project-path: rune-service-3
+      released: ${{ needs.release-please.outputs['test/rune-service-3'] == 'true' }}
       release-version: ${{ needs.release-please.outputs['rune-service-3-version'] }}
 
   rune-service-4-ci-cd:
