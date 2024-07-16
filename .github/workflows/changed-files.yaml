@@ -17,7 +17,8 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v44
         with:
-          fetch_depth: 2
+          fetch_depth: 1
+          fetch_missing_history_max_retries: 3
 
       - name: List all changed files
         env:
