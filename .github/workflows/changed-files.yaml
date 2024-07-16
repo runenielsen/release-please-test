@@ -24,4 +24,4 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs }}
         run: |
-            echo "See env"
+          echo "See env "
