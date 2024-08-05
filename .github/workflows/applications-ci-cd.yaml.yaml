@@ -74,9 +74,10 @@ jobs:
           manifest-file: release-please/.release-please-manifest-release-applications.json
       - name: Print Release Please Output
         if: "github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release-applications/') && startsWith(github.event.head_commit.message, 'chore: release applications from branch ')"
+        env:
+          RP_OUTPUT: ${{ toJson(steps.release-please.outputs) }}
         run: |
-          echo "Release Please Output:"
-          echo "${{ toJson(steps.release-please.outputs) }}"
+          echo "See env"
 
   dump:
     needs: [changed-projects, release-please]
